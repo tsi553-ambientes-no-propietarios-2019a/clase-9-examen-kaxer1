@@ -19,11 +19,17 @@ if($_POST) {
 		if($res->num_rows > 0) {
 				while ($row = $res->fetch_assoc()) {
 					$_SESSION['user'] = [
-						'store' => $row['store'],
+						'role' => $row['role'],
 						'username' => $row['username'],
-						'id' => $row['id']
+						'id_user' => $row['id_user']
 					];
-					redirect('../home.php');
+					
+					$conf_rol = $_SESSION['user']['role'];
+					if($conf_rol == 'administrador'){
+						redirect('../admin.php');
+					}elseif($conf_rol == 'cliente'){
+						redirect('../cliente.php');
+					}
 				}
 		} else {
 			redirect('../index.php?error_message=Usuario o clave incorrectos!');

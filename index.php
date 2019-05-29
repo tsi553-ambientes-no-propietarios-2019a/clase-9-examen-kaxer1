@@ -25,7 +25,7 @@ if($_GET) {
         <input type="password" name="password" placeholder="Clave">
         <button>Ingresar</button>
         <div>
-        <a href="registration.php">Registrar mi tienda</a>    
+        <a href="registration.php">Registrar Usuario</a>    
         </div>
     </form>
     
