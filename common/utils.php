@@ -52,6 +52,24 @@ function getSelectProduct($conn){
 echo '<br>';
 }
 
+function pago($id_product, $cantidad){
+	$conn = new mysqli('localhost', 'root', '', 'examenb1');
+
+
+	$sql_select = "SELECT p.price, p.id_user
+		FROM product p, user u
+		WHERE id_product=$id_product";
+	
+	$result = mysqli_query($conn,$sql_select);
+
+	if ($conn->error) {
+		redirect('../cliente.php?error_message=Ocurrió un error: ' . $conn->error);
+	}
+
+	while($mostrar = mysqli_fetch_array($result)){
+		return $mostrar['price'] * $cantidad;	
+	}
+}
 
 
 /*
